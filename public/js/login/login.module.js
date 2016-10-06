@@ -7,5 +7,5 @@ import routing from './login.routes';
 export default angular
 	.module('app.login', [uirouter])
 	.config(routing)
-	.controller(Login)
+	.controller('Login', Login)
 	.name;

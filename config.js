@@ -1,5 +1,5 @@
 let config = {
-	root: './public'
+	root: './build'
 };
 
 module.exports = config;

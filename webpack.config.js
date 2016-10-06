@@ -5,10 +5,13 @@ module.exports = {
 
 	output: {
 		path: './build',
-		filename: 'app.bundle.js'
+		filename: 'app.bundle.js',
+		publicPath: '/'
 	},
 
-	devtool: 'cheap-module',
+	watch: true,
+
+	devtool: 'cheap-module-source-map',
 
 	resolve: {
 		moduleDirectories: ['node_modules'],

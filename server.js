@@ -2,8 +2,10 @@ const express = require('express');
 const OAuthServer = require('express-oauth-server');
 const path = require('path');
 const fs = require('fs');
+const serve = require('serve-static');
 
 const config = require('./config');
+
 
 const model = require('./server/model/model');
 const middlewaresPath = path.join(__dirname, 'server/middlewares');
@@ -18,6 +20,8 @@ app.oauth = new OAuthServer({
 middlewares.forEach((middleware) => {
 	app.use(require(`${middlewaresPath}/${middleware}`));
 });
+
+app.use('/node_modules', serve(__dirname + '/node_modules'))
 
 app.use(app.oauth.authorize());
 

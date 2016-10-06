@@ -1,9 +1,7 @@
 Login.$inject = ['$http'];
 
 export default function Login($http) {
-	this.name = 'Nikita';
+	this.username = 'Nikita';
 
-	this.getToken = function() {
-
-	};
+	this.getToken = function() {};
 }

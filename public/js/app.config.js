@@ -1,5 +1,5 @@
-routing.$inject = ['$locationProvider'];
+routing.$inject = ['$urlRouterProvider'];
 
-export default function routing($locationProvider) {
-	$locationProvider.html5Mode(true);
+export default function routing($urlRouterProvider) {
+	$urlRouterProvider.otherwise('/');
 }

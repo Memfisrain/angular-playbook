@@ -7,5 +7,5 @@ import routing from './secret.routes';
 export default angular
 	.module('app.secret', [uirouter])
 	.config(routing)
-	.controller(Secret)
+	.controller('Secret', Secret)
 	.name;
