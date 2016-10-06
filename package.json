@@ -5,15 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
     "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
     "babel-cli": "^6.16.0",
     "babel-preset-latest": "^6.16.0",
     "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
     "express": "^4.14.0",
     "express-oauth-server": "^1.0.0",
     "node-oauth2-server": "^2.4.0",
