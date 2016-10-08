@@ -10,8 +10,8 @@ const config = require('./config');
 const model = require('./server/model/model');
 const middlewaresPath = path.join(__dirname, 'server/middlewares');
 
-// save access token for one user
-let accessToken = crypto.randomBytes(48).toString('hex');
+// so far token is not generated and saved
+let accessToken;
 let isTokenSaved = false;
 
 let app = express();
@@ -27,8 +27,10 @@ middlewares.forEach((middleware) => {
 
 app.use('/node_modules', serve(__dirname + '/node_modules'))
 
-app.post('/api/secret', app.oauth.authorize(), (req, res) => {
-	console.log(req);
+
+
+app.get('/api/secret', app.oauth.authorize(), (req, res) => {
+	res.send('Your secret recipe');
 });
 
 app.post('/login', (req, res) => {
@@ -36,10 +38,13 @@ app.post('/login', (req, res) => {
 
 	if(user) {
 		if (!isTokenSaved) {
+				// generate and save access token for user
+				accessToken = crypto.randomBytes(48).toString('hex');
 				model.saveToken({accessToken}, user);
 		}
 		
 		res.send({access_token: accessToken});
+		return;
 	}
 
 	res.statusCode = 401;
