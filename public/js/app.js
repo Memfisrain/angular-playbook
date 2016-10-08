@@ -5,6 +5,7 @@ import core from './common/core.module';
 import login from './login/login.module';
 import secret from './secret/secret.module';
 
+console.log(core);
 angular
 	.module('app', [
 		core,

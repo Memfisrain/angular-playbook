@@ -3,12 +3,16 @@ const OAuthServer = require('express-oauth-server');
 const path = require('path');
 const fs = require('fs');
 const serve = require('serve-static');
+const crypto = require('crypto');
 
 const config = require('./config');
 
-
 const model = require('./server/model/model');
 const middlewaresPath = path.join(__dirname, 'server/middlewares');
+
+// save access token for one user
+let accessToken = crypto.randomBytes(48).toString('hex');
+let isTokenSaved = false;
 
 let app = express();
 let middlewares = fs.readdirSync(middlewaresPath).sort();
@@ -23,19 +27,26 @@ middlewares.forEach((middleware) => {
 
 app.use('/node_modules', serve(__dirname + '/node_modules'))
 
-app.use(app.oauth.authorize());
-
-app.post('/api/secret', (req, res) => {
+app.post('/api/secret', app.oauth.authorize(), (req, res) => {
 	console.log(req);
 });
 
 app.post('/login', (req, res) => {
-	console.log(req);
+	let user = model.getUser(req.body.username, req.body.password);
+
+	if(user) {
+		if (!isTokenSaved) {
+				model.saveToken({accessToken}, user);
+		}
+		
+		res.send({access_token: accessToken});
+	}
+
+	res.statusCode = 401;
+	res.send('Unknown user');
 });
 
-app.get('*', (req, res) => {
-	//res.send(path.join(__dirname, config.root, 'index.html'));
-})
+
 
 app.listen(3000);
 

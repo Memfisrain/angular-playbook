@@ -11,7 +11,7 @@ module.exports = {
 
 	watch: true,
 
-	devtool: 'cheap-module-source-map',
+	devtool: 'source-map',
 
 	resolve: {
 		moduleDirectories: ['node_modules'],

@@ -1,9 +1,9 @@
 class InMemoryCache {
 	constructor() {
-		object.assign(this, {
+		Object.assign(this, {
 			tokens: [],
 			users: [{username: 'nikita', password: 'Epam1234'}],
-			client: []
+			client: [{ clientId : 'thom', clientSecret : 'nightworld', redirectUris : [''] }]
 		});
 	}
 
@@ -32,10 +32,18 @@ class InMemoryCache {
 
 	getUser(username, password) {
 		let users = this.users
-			.filter(user => user.username == username && user.password == passowrd);
+			.filter(user => user.username == username && user.password == password);
 
 		return users.length? users[0] : false;
 	}
+
+	grantTypeAllowed(clientId, grantType) {
+		return true;
+	}
+
+	saveAuthorizationCode() {
+
+	}
 }
 
-module.exports = InMemoryCache;
+module.exports = new InMemoryCache();
