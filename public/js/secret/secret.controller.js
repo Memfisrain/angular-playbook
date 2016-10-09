@@ -3,7 +3,7 @@ Secret.$inject = ['$http'];
 export default function Secret($http) {
 	let vm = this;
 
-	vm.recipe = {title: 'My Super Recipe'};
+	vm.recipe = {};
 	vm.getSecret = getSecret;
 
 	getSecret();
@@ -12,7 +12,7 @@ export default function Secret($http) {
 	function getSecret() {
 		$http.get('/api/secret')
 			.then(res => {
-				console.log(res);
+				Object.assign(vm.recipe, res.data.recipe);
 			})
 			.catch(err => {
 				console.info(err);
