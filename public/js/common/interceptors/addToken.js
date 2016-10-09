@@ -9,7 +9,7 @@ export default function addToken(currentUser) {
 			config.headers.Authentication = `Bearer ${currentUser.profile.token}`;
 		}
 
-		config.params = Object.assign(config.params || {}, {client_id: 'thom', client_secret: 'nightworld'});
+		//config.params = Object.assign(config.params || {}, {client_id: 'thom', client_secret: 'nightworld'});
 
 		return config;
 	}

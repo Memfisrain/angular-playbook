@@ -17,4 +17,5 @@ function routing($urlRouterProvider, $stateProvider) {
 
 function httpInteractions($httpProvider) {
 	$httpProvider.interceptors.push('addToken');
+	$httpProvider.interceptors.push('loginRedirect');
 }

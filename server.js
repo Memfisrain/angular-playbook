@@ -29,10 +29,7 @@ app.use('/node_modules', serve(__dirname + '/node_modules'));
 // ENDPOINT TO RECEIVE ACCESS TOKEN
 app.post('/login', app.oauth.token());
 
-/*app.get('/api/secret', verifyAccess, (req, res) => {
-	res.send('My today Super RECIPE');
-});*/
-
+// ADD HANDLER TO ALL /api requests
 app.use('/api', apiRouter);
 
 

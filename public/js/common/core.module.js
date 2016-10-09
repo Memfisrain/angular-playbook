@@ -1,18 +1,21 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
+import sanitize from 'angular-sanitize';
 
-import currentUser from './currentUser';
+import currentUser from './services/currentUser';
+import oauth from './services/oauth';
+import formEncode from './services/formEncode';
+import localStorage from './services/localStorage';
+
 import addToken from './interceptors/addToken';
-import oauth from './oauth';
-import formEncode from './formEncode';
-
-console.log(formEncode);
-console.log(oauth);
+import loginRedirect from './interceptors/loginRedirect';
 
 export default angular
-	.module('app.core', [uirouter])
+	.module('app.core', [uirouter, sanitize])
 	.factory('currentUser', currentUser)
-	.factory('addToken', addToken)
 	.service('formEncode', formEncode)
 	.service('oauth', oauth)
+	.service('localStorage', localStorage)
+	.factory('addToken', addToken)
+	.factory('loginRedirect', loginRedirect)
 	.name;

@@ -1,6 +1,6 @@
-Login.$inject = ['$http', 'oauth', 'currentUser'];
+Login.$inject = ['$http', 'oauth', 'currentUser', 'loginRedirect'];
 
-export default function Login($http, oauth, currentUser) {
+export default function Login($http, oauth, currentUser, loginRedirect) {
 	let vm = this;
 
 	vm.username = 'nikita';
@@ -15,8 +15,11 @@ export default function Login($http, oauth, currentUser) {
 		if (form.$valid) {
 			oauth
 				.login(vm.username, vm.password)
+				.then(res => {
+					loginRedirect.redirectLastPath();
+				})
 				.catch(err => {
-					console.error(err);
+					console.info(err);
 				});
 
 				vm.username = vm.password = '';
