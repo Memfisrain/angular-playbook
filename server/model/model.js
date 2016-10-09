@@ -1,49 +1,43 @@
-class InMemoryCache {
-	constructor() {
-		Object.assign(this, {
-			tokens: [],
-			users: [{username: 'nikita', password: 'Epam1234'}],
-			client: [{ clientId : 'thom', clientSecret : 'nightworld', redirectUris : [''] }]
-		});
-	}
+let model = {
+	tokens: [],
+	users: [{username: 'nikita', password: 'Epam1234'}],
+	clients: [{
+	 	clientId : 'thom', 
+	 	clientSecret : 'nightworld', 
+		redirectUris : [''], 
+		grants: ['password', 'authorization_code']
+	}]
+};
 
-	dump() {
-		console.log(`users: ${this.users}`);
-	}
 
-	getAccessToken(bearerToken) {
-		let tokens = this.tokens.filter(token => token.accessToken === bearerToken);
-		return tokens.length? tokens[0] : false;
-	}
+module.exports.getAccessToken = function getAccessToken(bearerToken) {
+	let tokens = model.tokens.filter(token => token.accessToken === bearerToken);
+	return tokens.length? tokens[0] : false;
+};
 
-	saveToken(token, user) {
-		this.tokens.push({
-			accessToken: token.accessToken,
-			username: user.username
-		});
-	}
+module.exports.saveToken = function saveToken(token, client, user) {
+	model.tokens.push({
+		accessToken: token.accessToken,
+		username: user.username
+	});
 
-	getClient(clientId, clientSecret) {
-		let clients = this.clients
-			.filter(client => client.clientId == clientId && client.secret == secret);
+	return Object.assign(token, {user, client});
+};
 
-		return clients.length? clients[0] : false;
-	}
+module.exports.getClient = function getClient(clientId) {
+	let clients = model.clients
+		.filter(client => client.clientId == clientId);
 
-	getUser(username, password) {
-		let users = this.users
-			.filter(user => user.username == username && user.password == password);
+	return clients.length? clients[0] : false;
+};
 
-		return users.length? users[0] : false;
-	}
+module.exports.getUser = function getUser(username, password) {
+	let users = model.users
+		.filter(user => user.username == username && user.password == password);
 
-	grantTypeAllowed(clientId, grantType) {
-		return true;
-	}
+	return users.length? users[0] : false;
+};
 
-	saveAuthorizationCode() {
-
-	}
-}
-
-module.exports = new InMemoryCache();
+module.exports.saveAuthorizationCode = function saveAuthorizationCode(code, client, user) {
+	return code;
+};

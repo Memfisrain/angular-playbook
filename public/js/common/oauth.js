@@ -11,11 +11,17 @@ function oauth($http, formEncode, currentUser) {
 
 		let config = {
 			headers: {
-				'content-Type': 'application/x-www-form-urlencoded'
+				'Content-Type': 'application/x-www-form-urlencoded'
 			}
 		}
 
-		let data = formEncode({username, password, grant_type: 'password'});
+		let data = formEncode({
+			username, 
+			password, 
+			grant_type: 'password', 
+			client_id: 'thom', 
+			client_secret: 'nightworld'
+		});
 
 		return $http.post('/login', data, config)
 			.then(res => {

@@ -15,7 +15,7 @@ export default function Secret($http) {
 				console.log(res);
 			})
 			.catch(err => {
-				console.warn(err);
+				console.info(err);
 			});
 	};
 }
