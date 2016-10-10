@@ -6,10 +6,8 @@ export default function addToken(currentUser) {
 
 	function request(config) {		
 		if(currentUser.profile.loggedIn) {
-			config.headers.Authentication = `Bearer ${currentUser.profile.token}`;
+			config.headers.Authorization = `Bearer ${currentUser.profile.token}`;
 		}
-
-		//config.params = Object.assign(config.params || {}, {client_id: 'thom', client_secret: 'nightworld'});
 
 		return config;
 	}

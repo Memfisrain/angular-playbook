@@ -18,5 +18,10 @@ available, fresh berries.`,
 };
 
 module.exports = function(req, res, next) {
-	res.send({recipe});
-}
+  if(res.statusCode !== 401) {
+    res.send({recipe});
+    return;
+  }
+
+	res.send();
+};

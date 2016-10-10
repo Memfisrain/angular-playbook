@@ -18,7 +18,7 @@ module.exports.getAccessToken = function getAccessToken(bearerToken) {
 module.exports.saveToken = function saveToken(token, client, user) {
 	model.tokens.push({
 		accessToken: token.accessToken,
-		username: user.username
+		user
 	});
 
 	return Object.assign(token, {user, client});

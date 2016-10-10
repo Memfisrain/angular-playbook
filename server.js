@@ -1,5 +1,5 @@
 const express = require('express');
-const OAuthServer = require('express-oauth-server');
+const OAuthServer = require('./server/express-oauth');
 const path = require('path');
 const fs = require('fs');
 const serve = require('serve-static');
@@ -12,7 +12,7 @@ const middlewaresPath = path.join(__dirname, 'server/middlewares');
 let app = express();
 let middlewares = fs.readdirSync(middlewaresPath).sort();
 
-let apiRouter = require('./server/api/api.router');
+let secretServiceMiddleware = require('./server/api/secret-recipe');
 
 app.oauth = new OAuthServer({
 	model
@@ -29,9 +29,9 @@ app.use('/node_modules', serve(__dirname + '/node_modules'));
 // ENDPOINT TO RECEIVE ACCESS TOKEN
 app.post('/login', app.oauth.token());
 
-// ADD HANDLER TO ALL /api requests
-app.use('/api', apiRouter);
-
+// API authenticate middleware
+app.use('/api', app.oauth.authenticate());
+app.get('/api/secret', secretServiceMiddleware);
 
 // START SERVER ON PORT 3000
 app.listen(3000);
