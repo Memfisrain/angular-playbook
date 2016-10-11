@@ -11,7 +11,7 @@ function routing($urlRouterProvider, $stateProvider) {
 	$stateProvider
 		.state('/', {
 			url: '/',
-			template: require('../home.html'),
+			template: require('../templates/home.html'),
 		});
 }
 
