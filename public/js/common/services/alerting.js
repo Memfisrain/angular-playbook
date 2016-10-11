@@ -9,6 +9,7 @@ export default function alerting($timeout) {
 		addInfo,
 		addSuccess,
 		addAlert,
+		removeAlert,
 		currentAlerts
 	};
 

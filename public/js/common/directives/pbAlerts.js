@@ -9,7 +9,7 @@ export default function pbAlerts(alerting) {
 			$scope.removeAlert = function(alert) {
 				alerting.removeAlert(alert);
 			};
-		}
+		},
 		link: function(scope, element, attrs) {
 			scope.alerts = alerting.currentAlerts;
 		}

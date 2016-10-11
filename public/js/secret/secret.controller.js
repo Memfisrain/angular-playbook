@@ -6,6 +6,8 @@ export default function Secret($http) {
 	vm.recipe = {};
 	vm.getSecret = getSecret;
 
+	vm.throwErr = throwErr;
+
 	getSecret();
 
 	//////////////////////////
@@ -17,5 +19,9 @@ export default function Secret($http) {
 			.catch(err => {
 				console.info(err);
 			});
-	};
+	}
+
+	function throwErr() {
+		throw new Error('Something has gone wrong');
+	}
 }

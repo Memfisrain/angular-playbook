@@ -13,8 +13,13 @@ import loginRedirect from './interceptors/loginRedirect';
 
 import pbAlerts from './directives/pbAlerts'
 
+import exceptionHandlerDecorator from './decorators/exceptionHandler.decorator';
+
 export default angular
 	.module('app.core', [uirouter, sanitize])
+	.config($provide => {
+		$provide.decorator('$exceptionHandler', exceptionHandlerDecorator);
+	})
 	.factory('currentUser', currentUser)
 	.service('formEncode', formEncode)
 	.service('oauth', oauth)
