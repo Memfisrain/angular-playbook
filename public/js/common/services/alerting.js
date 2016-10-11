@@ -1,6 +1,6 @@
-import angular from 'angular';
+alerting.$inject = ['$timeout'];
 
-export default function alerting() {
+export default function alerting($timeout) {
 	let currentAlerts = [];
 
 	return {
@@ -30,6 +30,18 @@ export default function alerting() {
 	}
 
 	function addAlert(type, message) {
-		currentAlerts.push({type, message});
+		let alert = {type, message};
+
+		currentAlerts.push(alert);
+
+		$timeout(function() {
+			removeAlert(alert);
+		}, 5000);
+	}
+
+	function removeAlert(alert) {
+		currentAlerts.some((a, ind) => {
+			return a === alert && currentAlerts.splice(ind, 1);
+		});
 	}
 }

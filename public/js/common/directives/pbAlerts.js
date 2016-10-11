@@ -5,6 +5,11 @@ export default function pbAlerts(alerting) {
 		restrict: 'EA',
 		template: require('../../../templates/alerts.html'),
 		scope: {},
+		controller: function($scope) {
+			$scope.removeAlert = function(alert) {
+				alerting.removeAlert(alert);
+			};
+		}
 		link: function(scope, element, attrs) {
 			scope.alerts = alerting.currentAlerts;
 		}
