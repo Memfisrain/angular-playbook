@@ -14,11 +14,13 @@ import loginRedirect from './interceptors/loginRedirect';
 import pbAlerts from './directives/pbAlerts'
 
 import exceptionHandlerDecorator from './decorators/exceptionHandler.decorator';
+import interpolateDecorator from './decorators/interpolate.decorator';
 
 export default angular
 	.module('app.core', [uirouter, sanitize])
 	.config($provide => {
 		$provide.decorator('$exceptionHandler', exceptionHandlerDecorator);
+		$provide.decorator('$interpolate', interpolateDecorator);
 	})
 	.factory('currentUser', currentUser)
 	.service('formEncode', formEncode)
