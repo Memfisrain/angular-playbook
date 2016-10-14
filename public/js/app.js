@@ -1,3 +1,5 @@
+import bootstrap from 'bootstrap/dist/css/bootstrap.css'
+
 import angular from 'angular';
 import configure from './app.config';
 

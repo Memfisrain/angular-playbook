@@ -1,3 +1,5 @@
+import '../../../css/pbWorkSpinner.css'
+
 workSpinner.$inject = ['requestCounter'];
 
 export default function workSpinner(requestCounter) {

@@ -1,7 +1,10 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-	entry: './public/js/app',
+	entry: {
+		app: './public/js/app'
+	},
 
 	output: {
 		path: './build',
@@ -28,9 +31,21 @@ module.exports = {
 		noParse: [/angular\\angular\.js$/, /angular-ui-router\\release\\angular-ui-router\.js$/],
 		loaders: [
 			{test: /\.js$/, include: path.resolve(__dirname, 'public/js'), loader: 'babel'},
-			{test: /\.css$/, loader: 'css'},
+			{test: /\.css$/, loader: 'style!css'},
 			{test: /\.html$/, loader: 'raw'},
 			{test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/, loader: 'file'}
 		]
+	},
+
+	devServer: {
+		host: 'localhost',
+		port: 8080,
+		proxy: {
+			'/api': {
+				target: 'http://localhost:3000'
+			}
+		},
+		contentBase: path.join(__dirname, 'public'),
+		hot: true
 	}
 }
