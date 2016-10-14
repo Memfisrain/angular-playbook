@@ -1,6 +1,6 @@
-Login.$inject = ['$http', 'oauth', 'currentUser', 'loginRedirect'];
+Login.$inject = ['$http', 'oauth', 'currentUser', 'loginRedirect', 'alerting'];
 
-export default function Login($http, oauth, currentUser, loginRedirect) {
+export default function Login($http, oauth, currentUser, loginRedirect, alerting) {
 	let vm = this;
 
 	vm.username = 'nikita';
@@ -18,9 +18,7 @@ export default function Login($http, oauth, currentUser, loginRedirect) {
 				.then(res => {
 					loginRedirect.redirectLastPath();
 				})
-				.catch(err => {
-					console.info(err);
-				});
+				.catch(alerting.errorHandler('Failed to login'));
 
 				vm.username = vm.password = '';
 				form.$setUntouched();

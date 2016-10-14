@@ -10,7 +10,8 @@ export default function alerting($timeout) {
 		addSuccess,
 		addAlert,
 		removeAlert,
-		currentAlerts
+		currentAlerts,
+		errorHandler
 	};
 
 	//////////////////
@@ -44,5 +45,11 @@ export default function alerting($timeout) {
 		currentAlerts.some((a, ind) => {
 			return a === alert && currentAlerts.splice(ind, 1);
 		});
+	}
+
+	function errorHandler(description) {
+		return () => {
+			addDanger(description);
+		};
 	}
 }
