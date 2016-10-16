@@ -1,11 +1,16 @@
-import bootstrap from 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css';
+import '../css/main.css';
 
 import angular from 'angular';
+
 import configure from './app.config';
+import appStart from './app.start';
 
 import core from './common/core.module';
 import login from './login/login.module';
 import secret from './secret/secret.module';
+import dashboard from './dashboard/dashboard.module';
+
 
 angular
 	.module('app', [
@@ -14,6 +19,8 @@ angular
 		 * Feature areas
 		 */
 		 login,
-		 secret
+		 secret,
+		 dashboard
 	])
-	.config(configure);
+	.config(configure)
+	.run(appStart);
