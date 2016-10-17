@@ -1,5 +1,6 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
+import uibootstrap from 'angular-bootstrap-npm';
 import sanitize from 'angular-sanitize';
 
 import currentUser from './services/currentUser.service';
@@ -19,7 +20,7 @@ import exceptionHandlerDecorator from './decorators/exceptionHandler.decorator';
 import interpolateDecorator from './decorators/interpolate.decorator';
 
 export default angular
-	.module('app.core', [uirouter, sanitize])
+	.module('app.core', [uirouter, uibootstrap, sanitize])
 	.config($provide => {
 		$provide.decorator('$exceptionHandler', exceptionHandlerDecorator);
 		$provide.decorator('$interpolate', interpolateDecorator);

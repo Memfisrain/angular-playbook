@@ -1,0 +1,12 @@
+.text-muted {
+	color: #FFF;
+}
+
+td, th {
+	color:  #FFF;
+	font-size: 18px;
+}
+
+tr:hover {
+	background-color: #111 !important;
+}

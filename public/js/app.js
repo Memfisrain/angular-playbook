@@ -10,6 +10,7 @@ import core from './common/core.module';
 import login from './login/login.module';
 import secret from './secret/secret.module';
 import dashboard from './dashboard/dashboard.module';
+import admin from './admin/admin.module';
 
 
 angular
@@ -20,7 +21,8 @@ angular
 		 */
 		 login,
 		 secret,
-		 dashboard
+		 dashboard,
+		 admin
 	])
 	.config(configure)
 	.run(appStart);
