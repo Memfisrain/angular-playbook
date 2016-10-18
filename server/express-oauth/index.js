@@ -77,6 +77,7 @@ class ExpressOAuthServer extends NodeOAuthServer {
 				.resolve()
 				.then(() => superToken(request, response, options))
 				.tap(token => {
+					console.log(token);
 					res.locals.oauth = {token};
 				})
 				.then(() => handleResponse(req, res, response))

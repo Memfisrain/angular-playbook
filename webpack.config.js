@@ -43,6 +43,9 @@ module.exports = {
 		proxy: {
 			'/api': {
 				target: 'http://localhost:3000'
+			},
+			'/login': {
+				target: 'http://localhost:3000'
 			}
 		},
 		contentBase: path.join(__dirname, 'public'),

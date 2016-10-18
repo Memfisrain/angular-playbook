@@ -5,6 +5,8 @@ export default function Rating($scope) {
 
 	$scope.click = onClick;
 	$scope.styles = styles;
+	$scope.mouseover = mouseover;
+	$scope.mouseout = mouseout;
 
 	/////////////////////////
 	function initialize(min, max) {
@@ -20,6 +22,15 @@ export default function Rating($scope) {
 			'glyphicon': true,
 			'glyphicon-star': $index < $scope.value,
 			'glyphicon-star-empty': $index >= $scope.value,
+			'starpreview': $index <= $scope.preview
 		};
+	}
+
+	function mouseover($index) {
+		$scope.preview = $index;
+	}
+
+	function mouseout($index) {
+		$scope.preview = -1;
 	}
 };

@@ -1,16 +1,15 @@
-export default pbRating() {
+export default function pbRating() {
 	return {
 		scope: {
 			value: '='
 		},
-		require('Rating'),
-		template: require('../../../templates/pbRating.html'),
+		template: require('./rating.html'),
 		controller: 'Rating',
-		link: function(scope, element, attrs, controller) {
-			let min = attrs.min;
-			let max = attrs.max;
+		link: function(scope, element, attrs, ctrl) {
+			let min = parseInt(attrs.min);
+			let max = parseInt(attrs.max);
 
-			controller.initialize(min, max);
+			ctrl.initialize(min, max);
 		}
-	}
+	};
 }
