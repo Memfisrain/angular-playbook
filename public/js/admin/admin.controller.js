@@ -4,10 +4,10 @@ export default function Admin(Employee, alerting, confirmPromotion) {
 	let model = this;
 
 	model.employees = [
-		new Employee('Scott', 'Allen'),
-		new Employee('Alex', 'Lifeson'),
-		new Employee('Zoey', 'Duck'),
-		new Employee('Peter', 'Show')
+		new Employee('Scott', 'Allen', 4),
+		new Employee('Alex', 'Lifeson', 2),
+		new Employee('Zoey', 'Duck', 5),
+		new Employee('Peter', 'Show', 3)
 	];
 
 	model.promote = promote;

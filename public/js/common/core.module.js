@@ -19,8 +19,19 @@ import pbWorkSpinner from './directives/pbWorkSpinner.directive';
 import exceptionHandlerDecorator from './decorators/exceptionHandler.decorator';
 import interpolateDecorator from './decorators/interpolate.decorator';
 
+import rating from './components/rating/rating.module';
+
 export default angular
-	.module('app.core', [uirouter, uibootstrap, sanitize])
+	.module('app.core', [
+		uirouter,
+		uibootstrap,
+		sanitize,
+
+		/*
+		* components
+		*/
+		rating
+	])
 	.config($provide => {
 		$provide.decorator('$exceptionHandler', exceptionHandlerDecorator);
 		$provide.decorator('$interpolate', interpolateDecorator);

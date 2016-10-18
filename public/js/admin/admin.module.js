@@ -1,4 +1,5 @@
 import './css/admin.css';
+import './css/confirmPromotion.css';
 
 import routes from './admin.routes';
 
