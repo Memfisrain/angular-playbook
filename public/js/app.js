@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
+import '../css/animate.css';
 import '../css/main.css';
 
 import angular from 'angular';

@@ -26,6 +26,8 @@
     "webpack": "^1.13.2"
   },
   "devDependencies": {
+    "angular-animate": "^1.5.8",
+    "angular-messages": "^1.5.8",
     "body-parser": "^1.15.2",
     "co": "^4.6.0",
     "errorhandler": "^1.4.3",

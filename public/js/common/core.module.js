@@ -2,6 +2,8 @@ import angular from 'angular';
 import uirouter from 'angular-ui-router';
 import uibootstrap from 'angular-bootstrap-npm';
 import sanitize from 'angular-sanitize';
+import ngMessages from 'angular-messages';
+import ngAnimate from 'angular-animate';
 
 import currentUser from './services/currentUser.service';
 import oauth from './services/oauth.service';
@@ -27,6 +29,8 @@ export default angular
 		uirouter,
 		uibootstrap,
 		sanitize,
+		ngMessages,
+		ngAnimate,
 
 		/*
 		* components
