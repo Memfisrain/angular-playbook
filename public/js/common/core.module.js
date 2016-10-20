@@ -19,6 +19,8 @@ import pbAlerts from './directives/pbAlerts.directive';
 import pbWorkSpinner from './directives/pbWorkSpinner.directive';
 import pbForminput from './directives/pbForminput.directive';
 
+import username from './directives/validators/username.validator';
+
 import exceptionHandlerDecorator from './decorators/exceptionHandler.decorator';
 import interpolateDecorator from './decorators/interpolate.decorator';
 
@@ -52,4 +54,5 @@ export default angular
 	.directive('pbAlerts', pbAlerts)
 	.directive('pbWorkSpinner', pbWorkSpinner)
 	.directive('pbForminput', pbForminput)
+	.directive('username', username)
 	.name;

@@ -15,7 +15,7 @@ export default function loginRedirect($q, $location) {
 			$location.path('/login');
 		}
 
-		return $q.reject();
+		return $q.reject(res);
 	}
 
 	function redirectLastPath() {

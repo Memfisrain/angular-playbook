@@ -13,6 +13,7 @@ let app = express();
 let middlewares = fs.readdirSync(middlewaresPath).sort();
 
 let secretServiceMiddleware = require('./server/api/secret-recipe');
+let nameValidationMiddleware = require('./server/api/name-validation');
 
 app.oauth = new OAuthServer({
 	model
@@ -32,6 +33,7 @@ app.post('/login', app.oauth.token());
 // API authenticate middleware
 app.use('/api', app.oauth.authenticate());
 app.get('/api/secret', secretServiceMiddleware);
+app.get('/api/namevalidation', nameValidationMiddleware);
 
 // START SERVER ON PORT 3000
 app.listen(3000);
