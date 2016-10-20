@@ -25,7 +25,7 @@ function oauth($http, formEncode, currentUser) {
 
 		return $http.post('/login', data, config)
 			.then(res => {
-				currentUser.setProfile(username, res.data.access_token);
+				currentUser.setProfile({username, token: res.data.access_token});
 			});
 	}
 }

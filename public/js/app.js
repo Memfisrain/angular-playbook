@@ -11,7 +11,7 @@ import login from './login/login.module';
 import secret from './secret/secret.module';
 import dashboard from './dashboard/dashboard.module';
 import admin from './admin/admin.module';
-
+import profile from './profile/profile.module';
 
 angular
 	.module('app', [
@@ -22,7 +22,8 @@ angular
 		 login,
 		 secret,
 		 dashboard,
-		 admin
+		 admin,
+		 profile
 	])
 	.config(configure)
 	.run(appStart);

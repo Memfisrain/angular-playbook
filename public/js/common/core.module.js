@@ -15,6 +15,7 @@ import requestCounter from './interceptors/requestCounter.interceptor';
 
 import pbAlerts from './directives/pbAlerts.directive';
 import pbWorkSpinner from './directives/pbWorkSpinner.directive';
+import pbForminput from './directives/pbForminput.directive';
 
 import exceptionHandlerDecorator from './decorators/exceptionHandler.decorator';
 import interpolateDecorator from './decorators/interpolate.decorator';
@@ -46,4 +47,5 @@ export default angular
 	.factory('loginRedirect', loginRedirect)
 	.directive('pbAlerts', pbAlerts)
 	.directive('pbWorkSpinner', pbWorkSpinner)
+	.directive('pbForminput', pbForminput)
 	.name;
